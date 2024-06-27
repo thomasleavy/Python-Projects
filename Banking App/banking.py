@@ -31,7 +31,7 @@ class Card:
         print("Your card PIN:")
         self.pin = str(random.randint(1000, 9999))
         print(self.pin)
-        cur.execute(f"""INSERT INTO card (number, pin) VALUES ({self.card}, {self.pin});""")
+        cur.execute("INSERT INTO card (number, pin) VALUES (?, ?);", (self.card, self.pin))
         conn.commit()
         
     def log_in(self):
